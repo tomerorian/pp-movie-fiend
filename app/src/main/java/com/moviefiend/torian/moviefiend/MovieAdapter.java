@@ -19,6 +19,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
+        holder.setTitle("Kings landing");
+        holder.setPosterView("http://awoiaf.westeros.org/images/thumb/6/64/Tomasz_Jedruszek_Kings_Landing.jpg/400px-Tomasz_Jedruszek_Kings_Landing.jpg");
+        holder.setRating(3.5f);
     }
 
     @Override
