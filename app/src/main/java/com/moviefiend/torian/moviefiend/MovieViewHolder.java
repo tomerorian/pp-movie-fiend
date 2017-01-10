@@ -32,6 +32,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         Picasso.with(itemView.getContext())
                 .load(url)
                 .fit()
+                .centerInside()
                 .into(mPosterView);
     }
 
