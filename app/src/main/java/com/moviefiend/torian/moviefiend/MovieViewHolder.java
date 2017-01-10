@@ -36,6 +36,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setRating(float rating) {
-        mRatingView.setText(String.format(Locale.US, "%.1f / 5", rating));
+        mRatingView.setText(String.format(Locale.US, "Rating: %.1f / 10", rating));
     }
 }

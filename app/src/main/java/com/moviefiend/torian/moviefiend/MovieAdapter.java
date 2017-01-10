@@ -5,8 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
+
+import java.util.ArrayList;
+
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
+
+    private ArrayList<NowPlayingResponse.MovieInfo> movies;
+
+    public MovieAdapter() {
+        movies = new ArrayList<>();
+    }
+
+    public void setMovies(ArrayList<NowPlayingResponse.MovieInfo> movies) {
+        this.movies = movies;
+        notifyDataSetChanged();
+    }
 
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -19,13 +34,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        holder.setTitle("Kings landing");
-        holder.setPosterView("http://awoiaf.westeros.org/images/thumb/6/64/Tomasz_Jedruszek_Kings_Landing.jpg/400px-Tomasz_Jedruszek_Kings_Landing.jpg");
-        holder.setRating(3.5f);
+        NowPlayingResponse.MovieInfo movie = movies.get(position);
+        holder.setTitle(movie.getTitle());
+        holder.setPosterView(String.format("http://image.tmdb.org/t/p/w500/%s", movie.getPosterPath()));
+        holder.setRating(movie.getRating());
     }
 
     @Override
     public int getItemCount() {
-        return 16;
+        return movies.size();
     }
 }
