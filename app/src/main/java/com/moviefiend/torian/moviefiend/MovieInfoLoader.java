@@ -13,6 +13,7 @@ import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
 import java.util.ArrayList;
 
 public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieInfo>> {
+
     public MovieInfoLoader(Context context) {
         super(context);
     }
@@ -41,7 +42,7 @@ public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieIn
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Error
+                        deliverResult(null);
                     }
                 });
         queue.add(request);

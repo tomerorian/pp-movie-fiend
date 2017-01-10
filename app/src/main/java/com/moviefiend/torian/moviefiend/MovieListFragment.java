@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<NowPlayingResponse.MovieInfo>> {
     public static final int MOVIE_LOADER_ID = 0;
+
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
 

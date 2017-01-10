@@ -23,7 +23,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     }
 
     public void setMovies(ArrayList<NowPlayingResponse.MovieInfo> movies) {
-        this.mMovies = movies;
+        if (movies != null) {
+            this.mMovies = movies;
+        } else {
+            this.mMovies = new ArrayList<>();
+        }
+
         notifyDataSetChanged();
     }
 
