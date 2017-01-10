@@ -2,5 +2,6 @@
     <string name="app_name">Movie Fiend</string>
     <string name="poster">poster</string>
     <string name="more_details">more details</string>
-    <string name="tmdb_now_playing">http://api.themoviedb.org/3/movie/now_playing?api_key=%s</string>
+    <string name="tmdb_now_playing_url">http://api.themoviedb.org/3/movie/now_playing?api_key=%s</string>
+    <string name="tmdb_poster_url">http://image.tmdb.org/t/p/w500/%s</string>
 </resources>

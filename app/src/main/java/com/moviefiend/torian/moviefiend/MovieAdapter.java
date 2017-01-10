@@ -1,5 +1,6 @@
 package com.moviefiend.torian.moviefiend;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,12 @@ import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
+    private Context context;
     private ArrayList<NowPlayingResponse.MovieInfo> movies;
 
-    public MovieAdapter() {
+    public MovieAdapter(Context context) {
+        this.context = context;
+
         movies = new ArrayList<>();
     }
 
@@ -36,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public void onBindViewHolder(MovieViewHolder holder, int position) {
         NowPlayingResponse.MovieInfo movie = movies.get(position);
         holder.setTitle(movie.getTitle());
-        holder.setPosterView(String.format("http://image.tmdb.org/t/p/w500/%s", movie.getPosterPath()));
+        holder.setPosterView(context.getString(R.string.tmdb_poster_url, movie.getPosterPath()));
         holder.setRating(movie.getRating());
     }
 
