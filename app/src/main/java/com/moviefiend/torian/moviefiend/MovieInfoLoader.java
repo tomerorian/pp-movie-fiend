@@ -19,9 +19,17 @@ public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieIn
 
     @Override
     protected void onForceLoad() {
+        loadMovies();
+    }
+
+    @Override
+    protected void onStartLoading() {
+        loadMovies();
+    }
+
+    private void loadMovies() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        // TODO: Extract key to gradle/resource (can also extract the url... maybe)
-        String url ="http://api.themoviedb.org/3/movie/now_playing?api_key=4ef5ef8497673e7c432e66126be4a324";
+        String url = getContext().getString(R.string.tmdb_now_playing, BuildConfig.TMDB_API_KEY);
 
         GsonRequest<NowPlayingResponse> request = new GsonRequest<>(url, NowPlayingResponse.class, null,
                 new Response.Listener<NowPlayingResponse>() {
@@ -37,10 +45,5 @@ public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieIn
                     }
                 });
         queue.add(request);
-    }
-
-    @Override
-    protected void onStartLoading() {
-        onForceLoad();
     }
 }
