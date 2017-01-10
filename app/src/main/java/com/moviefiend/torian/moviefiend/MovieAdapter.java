@@ -13,17 +13,17 @@ import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
-    private Context context;
-    private ArrayList<NowPlayingResponse.MovieInfo> movies;
+    private Context mContext;
+    private ArrayList<NowPlayingResponse.MovieInfo> mMovies;
 
     public MovieAdapter(Context context) {
-        this.context = context;
+        this.mContext = context;
 
-        movies = new ArrayList<>();
+        mMovies = new ArrayList<>();
     }
 
     public void setMovies(ArrayList<NowPlayingResponse.MovieInfo> movies) {
-        this.movies = movies;
+        this.mMovies = movies;
         notifyDataSetChanged();
     }
 
@@ -38,14 +38,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        NowPlayingResponse.MovieInfo movie = movies.get(position);
+        NowPlayingResponse.MovieInfo movie = mMovies.get(position);
         holder.setTitle(movie.getTitle());
-        holder.setPosterView(context.getString(R.string.tmdb_poster_url, movie.getPosterPath()));
+        holder.setPosterView(mContext.getString(R.string.tmdb_poster_url, movie.getPosterPath()));
         holder.setRating(movie.getRating());
     }
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return mMovies.size();
     }
 }
