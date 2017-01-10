@@ -33,7 +33,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         View itemView = inflater.inflate(R.layout.movie_item_view, parent, false);
 
         return new MovieViewHolder(itemView);
-
     }
 
     @Override
