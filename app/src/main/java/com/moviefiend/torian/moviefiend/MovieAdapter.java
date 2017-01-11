@@ -18,7 +18,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private List<NowPlayingResponse.MovieInfo> mMovies;
 
     public MovieAdapter(Context context) {
-        this.mContext = context;
+        mContext = context;
 
         mMovies =  new ArrayList<>();
     }
