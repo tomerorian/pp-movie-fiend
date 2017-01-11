@@ -6,25 +6,25 @@ import java.util.ArrayList;
 
 public class NowPlayingResponse {
     @SerializedName("results")
-    private ArrayList<MovieInfo> movies;
+    private ArrayList<MovieInfo> mMovies;
 
     public ArrayList<MovieInfo> getMovies() {
-        return movies;
+        return mMovies;
     }
 
     public static class MovieInfo {
         @SerializedName("poster_path")
-        String posterPath;
-        String title;
+        String mPosterPath;
+        String mTitle;
         @SerializedName("vote_average")
         Float rating;
 
         public String getPosterPath() {
-            return posterPath;
+            return mPosterPath;
         }
 
         public String getTitle() {
-            return title;
+            return mTitle;
         }
 
         public Float getRating() {
