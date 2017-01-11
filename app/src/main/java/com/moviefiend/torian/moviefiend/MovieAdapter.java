@@ -9,20 +9,21 @@ import android.view.ViewGroup;
 import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     private Context mContext;
-    private ArrayList<NowPlayingResponse.MovieInfo> mMovies;
+    private List<NowPlayingResponse.MovieInfo> mMovies;
 
     public MovieAdapter(Context context) {
         this.mContext = context;
 
-        mMovies = new ArrayList<>();
+        mMovies =  new ArrayList<>();
     }
 
-    public void setMovies(ArrayList<NowPlayingResponse.MovieInfo> movies) {
+    public void setMovies(List<NowPlayingResponse.MovieInfo> movies) {
         if (movies != null) {
             this.mMovies = movies;
         } else {
