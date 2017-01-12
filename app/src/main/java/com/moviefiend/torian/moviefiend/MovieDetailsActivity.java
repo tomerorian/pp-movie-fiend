@@ -10,6 +10,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.movie_details_activity);
 
         NowPlayingResponse.MovieInfo movieInfo = getIntent().getParcelableExtra("movie_info");
     }
