@@ -7,7 +7,7 @@
     tools:context="com.moviefiend.torian.moviefiend.MainActivity">
 
     <fragment
-        android:id="@+id/MovieListFragment"
+        android:id="@+id/movie_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.moviefiend.torian.moviefiend.MovieListFragment" />

@@ -14,27 +14,19 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     private List<NowPlayingResponse.MovieInfo> mMovies;
+    private MovieViewHolder.MovieClickListener mClickListener;
 
     public MovieAdapter() {
         mMovies =  new ArrayList<>();
     }
 
-    public void setMovies(List<NowPlayingResponse.MovieInfo> movies) {
-        if (movies != null) {
-            this.mMovies = movies;
-        } else {
-            this.mMovies = new ArrayList<>();
-        }
-
-        notifyDataSetChanged();
-    }
-
+    // <editor-fold desc="RecyclerView.Adapter">
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.movie_item_view, parent, false);
 
-        return new MovieViewHolder(itemView);
+        return new MovieViewHolder(itemView, mClickListener);
     }
 
     @Override
@@ -45,5 +37,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     @Override
     public int getItemCount() {
         return mMovies.size();
+    }
+    // </editor-fold>
+
+    public void setClickListener(MovieViewHolder.MovieClickListener clickListener) {
+        mClickListener = clickListener;
+    }
+
+    public void setMovies(List<NowPlayingResponse.MovieInfo> movies) {
+        if (movies != null) {
+            this.mMovies = movies;
+        } else {
+            this.mMovies = new ArrayList<>();
+        }
+
+        notifyDataSetChanged();
     }
 }

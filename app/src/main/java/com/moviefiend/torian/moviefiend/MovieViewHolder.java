@@ -10,13 +10,20 @@ import com.squareup.picasso.Picasso;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 
+    public interface MovieClickListener {
+        void onMovieClicked(NowPlayingResponse.MovieInfo movieInfo);
+    }
+
     private TextView mTitleView;
     private ImageView mPosterView;
     private TextView mRatingView;
     private NowPlayingResponse.MovieInfo mMovieInfo;
+    private MovieClickListener mClickListener;
 
-    public MovieViewHolder(View itemView) {
+    public MovieViewHolder(View itemView, MovieClickListener clickListener) {
         super(itemView);
+
+        mClickListener = clickListener;
 
         mTitleView = (TextView) itemView.findViewById(R.id.title);
         mPosterView = (ImageView) itemView.findViewById(R.id.poster);
@@ -29,6 +36,15 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         setTitle(mMovieInfo.getTitle());
         setPosterView(itemView.getContext().getString(R.string.tmdb_poster_url, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mClickListener != null) {
+                    mClickListener.onMovieClicked(mMovieInfo);
+                }
+            }
+        });
     }
 
     public void setTitle(String title) {

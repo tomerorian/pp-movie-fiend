@@ -15,11 +15,17 @@ import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
 
 import java.util.ArrayList;
 
-public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<NowPlayingResponse.MovieInfo>> {
-    public static final int MOVIE_LOADER_ID = 0;
+public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<NowPlayingResponse.MovieInfo>>,MovieViewHolder.MovieClickListener {
+
+    public interface Listener {
+        void onMovieSelected(NowPlayingResponse.MovieInfo movieInfo);
+    }
+
+    private static final int MOVIE_LOADER_ID = 0;
 
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
+    private Listener mListener;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -36,12 +42,13 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
         mRecyclerView = (RecyclerView) view.findViewById(R.id.movie_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mMovieAdapter = new MovieAdapter();
+        mMovieAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mMovieAdapter);
 
         return view;
     }
 
-//    <editor-fold Loader>
+    // <editor-fold desc="Loader">
     @Override
     public Loader<ArrayList<NowPlayingResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
         return new MovieInfoLoader(getActivity());
@@ -56,5 +63,16 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
     public void onLoaderReset(Loader<ArrayList<NowPlayingResponse.MovieInfo>> loader) {
 
     }
-//    </editor-fold>
+    // </editor-fold>
+
+    //<editor-fold desc="MovieClickListener">
+    @Override
+    public void onMovieClicked(NowPlayingResponse.MovieInfo movieInfo) {
+        mListener.onMovieSelected(movieInfo);
+    }
+    //</editor-fold>
+
+    public void setListener(Listener listener) {
+        mListener = listener;
+    }
 }
