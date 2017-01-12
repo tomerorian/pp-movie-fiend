@@ -15,6 +15,7 @@ public class NowPlayingResponse {
     public static class MovieInfo {
         @SerializedName("poster_path")
         String mPosterPath;
+        @SerializedName("title")
         String mTitle;
         @SerializedName("vote_average")
         Float rating;
