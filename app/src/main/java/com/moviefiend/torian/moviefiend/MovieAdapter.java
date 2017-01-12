@@ -14,12 +14,9 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
-    private Context mContext;
     private List<NowPlayingResponse.MovieInfo> mMovies;
 
-    public MovieAdapter(Context context) {
-        mContext = context;
-
+    public MovieAdapter() {
         mMovies =  new ArrayList<>();
     }
 
@@ -43,10 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        NowPlayingResponse.MovieInfo movie = mMovies.get(position);
-        holder.setTitle(movie.getTitle());
-        holder.setPosterView(mContext.getString(R.string.tmdb_poster_url, movie.getPosterPath()));
-        holder.setRating(movie.getRating());
+        holder.bindMovie(mMovies.get(position));
     }
 
     @Override
