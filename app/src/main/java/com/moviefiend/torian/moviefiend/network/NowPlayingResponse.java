@@ -18,7 +18,7 @@ public class NowPlayingResponse {
         @SerializedName("title")
         String mTitle;
         @SerializedName("vote_average")
-        Float rating;
+        Float mRating;
 
         public String getPosterPath() {
             return mPosterPath;
@@ -29,7 +29,7 @@ public class NowPlayingResponse {
         }
 
         public Float getRating() {
-            return rating;
+            return mRating;
         }
     }
 }
