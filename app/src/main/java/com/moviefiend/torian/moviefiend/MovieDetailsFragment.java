@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
+import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailsFragment extends Fragment {
 
     public static final int MOVIE_POSTER_SIZE = 780;
 
-    private NowPlayingResponse.MovieInfo mMovieInfo;
+    private MoviesResponse.MovieInfo mMovieInfo;
     private ImageView mPosterView;
     private TextView mRatingView;
     private TextView mDescriptionView;

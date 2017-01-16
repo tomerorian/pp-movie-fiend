@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
+import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 public class MainActivity extends AppCompatActivity implements MovieListFragment.Listener {
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MovieListFragment
     }
 
     @Override
-    public void onMovieSelected(NowPlayingResponse.MovieInfo movieInfo) {
+    public void onMovieSelected(MoviesResponse.MovieInfo movieInfo) {
         Intent intent = new Intent(this, MovieDetailsActivity.class);
         intent.putExtra("movie_info", movieInfo);
         startActivity(intent);

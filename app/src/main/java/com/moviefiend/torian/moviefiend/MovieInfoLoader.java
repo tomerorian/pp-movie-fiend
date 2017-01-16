@@ -8,11 +8,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.moviefiend.torian.moviefiend.network.GsonRequest;
-import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
+import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 import java.util.ArrayList;
 
-public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieInfo>> {
+public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
 
     public MovieInfoLoader(Context context) {
         super(context);
@@ -32,10 +32,10 @@ public class MovieInfoLoader extends Loader<ArrayList<NowPlayingResponse.MovieIn
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = getContext().getString(R.string.tmdb_now_playing_url, BuildConfig.TMDB_API_KEY);
 
-        GsonRequest<NowPlayingResponse> request = new GsonRequest<>(url, NowPlayingResponse.class, null,
-                new Response.Listener<NowPlayingResponse>() {
+        GsonRequest<MoviesResponse> request = new GsonRequest<>(url, MoviesResponse.class, null,
+                new Response.Listener<MoviesResponse>() {
                     @Override
-                    public void onResponse(NowPlayingResponse response) {
+                    public void onResponse(MoviesResponse response) {
                         deliverResult(response.getMovies());
                     }
                 },
