@@ -1,6 +1,7 @@
 package com.moviefiend.torian.moviefiend;
 
 import android.app.Fragment;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ public class MovieDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.movie_details_fragment, container, false);
 
-        mMovieInfo = getArguments().getParcelable("movie_info");
+        mMovieInfo = getArguments().getParcelable(MovieDetailsActivity.MOVIE_INFO_EXTRA);
 
         mPosterView = (ImageView) view.findViewById(R.id.poster);
         mRatingView = (TextView) view.findViewById(R.id.rating);
