@@ -14,6 +14,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         void onMovieClicked(NowPlayingResponse.MovieInfo movieInfo);
     }
 
+    public static final int MOVIE_POSTER_SIZE = 154;
+
     private TextView mTitleView;
     private ImageView mPosterView;
     private TextView mRatingView;
@@ -34,7 +36,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         mMovieInfo = movieInfo;
 
         setTitle(mMovieInfo.getTitle());
-        setPosterView(itemView.getContext().getString(R.string.tmdb_poster_url, mMovieInfo.getPosterPath()));
+        setPosterView(itemView.getContext().getString(R.string.tmdb_poster_url, MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
 
         itemView.setOnClickListener(new View.OnClickListener() {

@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 public class MovieDetailsFragment extends Fragment {
 
+    public static final int MOVIE_POSTER_SIZE = 780;
+
     private NowPlayingResponse.MovieInfo mMovieInfo;
     private ImageView mPosterView;
     private TextView mRatingView;
@@ -31,7 +33,7 @@ public class MovieDetailsFragment extends Fragment {
         mDescriptionView = (TextView) view.findViewById(R.id.description);
 
         setTitle(mMovieInfo.getTitle());
-        setPosterView(getString(R.string.tmdb_poster_url, mMovieInfo.getPosterPath()));
+        setPosterView(getString(R.string.tmdb_poster_url, MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
         setDescription(mMovieInfo.getDescription());
 
