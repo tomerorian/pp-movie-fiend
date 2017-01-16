@@ -2,8 +2,6 @@
     <string name="app_name">Movie Fiend</string>
     <string name="poster">poster</string>
     <string name="more_details">more details</string>
-    <string name="tmdb_now_playing_url" translatable="false">http://api.themoviedb.org/3/movie/now_playing?api_key=%s</string>
-    <string name="tmdb_poster_url" translatable="false">http://image.tmdb.org/t/p/w%d/%s</string>
     <string name="rating_lable">Rating: %.1f / 10</string>
     <string name="movie_poster">movie poster</string>
 </resources>

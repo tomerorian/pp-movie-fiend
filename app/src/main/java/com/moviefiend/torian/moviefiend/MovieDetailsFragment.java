@@ -34,7 +34,7 @@ public class MovieDetailsFragment extends Fragment {
         mDescriptionView = (TextView) view.findViewById(R.id.description);
 
         setTitle(mMovieInfo.getTitle());
-        setPosterView(getString(R.string.tmdb_poster_url, MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
+        setPosterView(UrlHelper.getPosterUrl(MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
         setDescription(mMovieInfo.getDescription());
 
