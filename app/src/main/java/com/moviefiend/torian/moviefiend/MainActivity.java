@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements MovieListFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MovieListFragment fragment = (MovieListFragment) getFragmentManager().findFragmentById(R.id.movie_list_fragment);
+        MovieListFragment fragment = (MovieListFragment) getSupportFragmentManager().findFragmentById(R.id.movie_list_fragment);
         fragment.setListener(this);
     }
 

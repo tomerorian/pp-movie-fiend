@@ -17,7 +17,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
         fragment.setArguments(getIntent().getExtras());
         fragment.setListener(this);
 
-        getFragmentManager()
+        getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.content_fragment, fragment)
                 .commit();

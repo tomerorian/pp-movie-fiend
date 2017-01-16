@@ -1,7 +1,7 @@
 package com.moviefiend.torian.moviefiend;
 
 import android.content.Context;
-import android.content.Loader;
+import android.support.v4.content.Loader;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
