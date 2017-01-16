@@ -36,7 +36,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         mMovieInfo = movieInfo;
 
         setTitle(mMovieInfo.getTitle());
-        setPosterView(itemView.getContext().getString(R.string.tmdb_poster_url, MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
+        setPosterView(UrlHelper.getPosterUrl(MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
 
         itemView.setOnClickListener(new View.OnClickListener() {

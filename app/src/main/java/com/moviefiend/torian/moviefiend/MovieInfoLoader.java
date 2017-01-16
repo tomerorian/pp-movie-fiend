@@ -30,7 +30,7 @@ public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>>
 
     private void loadMovies() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url = getContext().getString(R.string.tmdb_now_playing_url, BuildConfig.TMDB_API_KEY);
+        String url = UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY);
 
         GsonRequest<MoviesResponse> request = new GsonRequest<>(url, MoviesResponse.class, null,
                 new Response.Listener<MoviesResponse>() {

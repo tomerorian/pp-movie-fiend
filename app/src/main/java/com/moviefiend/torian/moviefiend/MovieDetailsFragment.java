@@ -32,7 +32,7 @@ public class MovieDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.movie_details_fragment, container, false);
 
-        mMovieInfo = getArguments().getParcelable("movie_info");
+        mMovieInfo = getArguments().getParcelable(MovieDetailsActivity.MOVIE_INFO_EXTRA);
 
         mPosterView = (ImageView) view.findViewById(R.id.poster);
         mRatingView = (TextView) view.findViewById(R.id.rating);
@@ -40,7 +40,7 @@ public class MovieDetailsFragment extends Fragment {
         mSimilarMoviesBtn = (TextView) view.findViewById(R.id.similar_movies);
 
         setTitle(mMovieInfo.getTitle());
-        setPosterView(getString(R.string.tmdb_poster_url, MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
+        setPosterView(UrlHelper.getPosterUrl(MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
         setDescription(mMovieInfo.getDescription());
 

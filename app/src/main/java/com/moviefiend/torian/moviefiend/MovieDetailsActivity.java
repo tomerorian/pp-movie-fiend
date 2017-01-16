@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 public class MovieDetailsActivity extends AppCompatActivity implements MovieDetailsFragment.Listener {
+
+    public static final String MOVIE_INFO_EXTRA = "movie_info";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +22,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.content_fragment, fragment)
+                .replace(R.id.content_fragment, fragment)
                 .commit();
 
     }
