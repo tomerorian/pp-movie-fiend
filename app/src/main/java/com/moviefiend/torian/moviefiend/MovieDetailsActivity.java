@@ -18,7 +18,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.content_fragment, fragment)
+                .replace(R.id.content_fragment, fragment)
                 .commit();
 
     }
