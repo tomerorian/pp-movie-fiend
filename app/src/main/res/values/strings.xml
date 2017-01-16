@@ -6,4 +6,5 @@
     <string name="tmdb_poster_url" translatable="false">http://image.tmdb.org/t/p/w%d/%s</string>
     <string name="rating_lable">Rating: %.1f / 10</string>
     <string name="movie_poster">movie poster</string>
+    <string name="similar_movies">Similar Movies</string>
 </resources>
