@@ -4,10 +4,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/movie_details_fragment"
+    <FrameLayout
+        android:id="@+id/content_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.moviefiend.torian.moviefiend.MovieDetailsFragment" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
