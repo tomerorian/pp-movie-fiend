@@ -22,11 +22,14 @@ public class NowPlayingResponse {
         String mTitle;
         @SerializedName("vote_average")
         Float mRating;
+        @SerializedName("overview")
+        String mDescription;
 
         public MovieInfo(Parcel source) {
             mPosterPath = source.readString();
             mTitle = source.readString();
             mRating = source.readFloat();
+            mDescription = source.readString();
         }
 
         //<editor-fold desc="Parcelable">
@@ -57,6 +60,7 @@ public class NowPlayingResponse {
             dest.writeString(mPosterPath);
             dest.writeString(mTitle);
             dest.writeFloat(mRating);
+            dest.writeString(mDescription);
         }
         //</editor-fold>
 
@@ -70,6 +74,10 @@ public class NowPlayingResponse {
 
         public Float getRating() {
             return mRating;
+        }
+
+        public String getDescription() {
+            return mDescription;
         }
     }
 }

@@ -35,7 +35,7 @@ public class MovieDetailsFragment extends Fragment {
         setTitle(mMovieInfo.getTitle());
         setPosterView(getString(R.string.tmdb_poster_url, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
-        setDescription("TODO TODO TODO");
+        setDescription(mMovieInfo.getDescription());
 
         return view;
     }
