@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 public class MovieDetailsFragment extends Fragment {
 
     private NowPlayingResponse.MovieInfo mMovieInfo;
-    private TextView mTitleView;
     private ImageView mPosterView;
     private TextView mRatingView;
     private TextView mDescriptionView;
@@ -27,7 +26,6 @@ public class MovieDetailsFragment extends Fragment {
 
         mMovieInfo = getArguments().getParcelable("movie_info");
 
-        mTitleView = (TextView) view.findViewById(R.id.title);
         mPosterView = (ImageView) view.findViewById(R.id.poster);
         mRatingView = (TextView) view.findViewById(R.id.rating);
         mDescriptionView = (TextView) view.findViewById(R.id.description);
@@ -41,7 +39,7 @@ public class MovieDetailsFragment extends Fragment {
     }
 
     private void setTitle(String title) {
-        mTitleView.setText(title);
+        getActivity().setTitle(title);
     }
 
     private void setPosterView(String url) {
