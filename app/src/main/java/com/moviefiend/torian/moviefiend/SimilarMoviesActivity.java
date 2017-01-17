@@ -38,7 +38,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
     //<editor-fold desc="Loader">
     @Override
     public Loader<ArrayList<MoviesResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
-        return new MovieInfoLoader(this);
+        return new MovieInfoLoader(this, UrlHelper.getSimilarMoviesUrl(BuildConfig.TMDB_API_KEY, 0)); // TODO: Get movie id
     }
 
     @Override

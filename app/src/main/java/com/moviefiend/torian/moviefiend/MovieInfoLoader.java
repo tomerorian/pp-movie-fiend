@@ -14,8 +14,12 @@ import java.util.ArrayList;
 
 public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
 
-    public MovieInfoLoader(Context context) {
+    private String mUrl;
+
+    public MovieInfoLoader(Context context, String url) {
         super(context);
+
+        mUrl = url;
     }
 
     @Override
@@ -30,9 +34,8 @@ public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>>
 
     private void loadMovies() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url = UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY);
 
-        GsonRequest<MoviesResponse> request = new GsonRequest<>(url, MoviesResponse.class, null,
+        GsonRequest<MoviesResponse> request = new GsonRequest<>(mUrl, MoviesResponse.class, null,
                 new Response.Listener<MoviesResponse>() {
                     @Override
                     public void onResponse(MoviesResponse response) {

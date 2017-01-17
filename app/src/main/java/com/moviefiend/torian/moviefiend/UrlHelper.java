@@ -26,4 +26,16 @@ public class UrlHelper {
                 .build()
                 .toString();
     }
+
+    public static String getSimilarMoviesUrl(String apiKey, Integer movieId) {
+        Uri.Builder builder = new Uri.Builder();
+        return builder.scheme("http")
+                .authority("api.themoviedb.org")
+                .appendEncodedPath("3/movie")
+                .appendPath(movieId.toString())
+                .appendEncodedPath("similar")
+                .appendQueryParameter("api_key", apiKey)
+                .build()
+                .toString();
+    }
 }
