@@ -68,6 +68,7 @@ public class MovieDetailsFragment extends Fragment {
     private void setPosterView(String url) {
         Picasso.with(getActivity())
                 .load(url)
+                .placeholder(R.drawable.movie_placeholder)
                 .into(mPosterView);
     }
 
