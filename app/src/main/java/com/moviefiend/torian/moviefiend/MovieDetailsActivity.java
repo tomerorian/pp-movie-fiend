@@ -11,14 +11,18 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
 
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
+    private MoviesResponse.MovieInfo mMovieInfo;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_details_activity);
 
+        mMovieInfo = getIntent().getParcelableExtra(MOVIE_INFO_EXTRA);
+
         MovieDetailsFragment fragment = new MovieDetailsFragment();
         Bundle arguments = new Bundle();
-        arguments.putParcelable(MovieDetailsFragment.MOVIE_INFO_ARG, getIntent().getParcelableExtra(MOVIE_INFO_EXTRA));
+        arguments.putParcelable(MovieDetailsFragment.MOVIE_INFO_ARG, mMovieInfo);
         fragment.setArguments(arguments);
         fragment.setListener(this);
 
@@ -32,6 +36,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
     @Override
     public void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo) {
         Intent intent = new Intent(this, SimilarMoviesActivity.class);
+        intent.putExtra(SimilarMoviesActivity.MOVIE_INFO_EXTRA, mMovieInfo);
         startActivity(intent);
     }
 }

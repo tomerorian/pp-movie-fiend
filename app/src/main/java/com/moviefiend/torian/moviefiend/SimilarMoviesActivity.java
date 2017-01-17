@@ -17,16 +17,20 @@ import java.util.ArrayList;
 public class SimilarMoviesActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>> {
 
+    public static final String MOVIE_INFO_EXTRA = "movie_info";
+
     private static final int MOVIE_LOADER_ID = 0;
 
     private ViewPager mMoviePager;
     private MoviePagerAdapter mMoviePagerAdapter;
+    private MoviesResponse.MovieInfo mMovieInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.similar_movies_activity);
 
+        mMovieInfo = getIntent().getParcelableExtra(MOVIE_INFO_EXTRA);
         mMoviePagerAdapter = new MoviePagerAdapter(getSupportFragmentManager());
 
         mMoviePager = (ViewPager) findViewById(R.id.movie_pager);
@@ -38,7 +42,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
     //<editor-fold desc="Loader">
     @Override
     public Loader<ArrayList<MoviesResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
-        return new MovieInfoLoader(this, UrlHelper.getSimilarMoviesUrl(BuildConfig.TMDB_API_KEY, 0)); // TODO: Get movie id
+        return new MovieInfoLoader(this, UrlHelper.getSimilarMoviesUrl(BuildConfig.TMDB_API_KEY, mMovieInfo.getId()));
     }
 
     @Override
