@@ -40,7 +40,9 @@ public class MovieDetailsFragment extends Fragment {
         mDescriptionView = (TextView) view.findViewById(R.id.description);
         mSimilarMoviesBtn = (TextView) view.findViewById(R.id.similar_movies);
 
-        setTitle(mMovieInfo.getTitle());
+        if (getUserVisibleHint()) {
+            setTitle(mMovieInfo.getTitle());
+        }
         setPosterView(UrlHelper.getPosterUrl(MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));
         setRating(mMovieInfo.getRating());
         setDescription(mMovieInfo.getDescription());
@@ -55,6 +57,15 @@ public class MovieDetailsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser && mMovieInfo != null && getActivity() != null) {
+            setTitle(mMovieInfo.getTitle());
+        }
     }
 
     public void setListener(Listener listener) {
