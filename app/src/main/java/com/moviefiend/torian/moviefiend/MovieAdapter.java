@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moviefiend.torian.moviefiend.network.NowPlayingResponse;
+import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
-    private List<NowPlayingResponse.MovieInfo> mMovies;
+    private List<MoviesResponse.MovieInfo> mMovies;
     private MovieViewHolder.MovieClickListener mClickListener;
 
     public MovieAdapter() {
@@ -44,7 +44,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         mClickListener = clickListener;
     }
 
-    public void setMovies(List<NowPlayingResponse.MovieInfo> movies) {
+    public void setMovies(List<MoviesResponse.MovieInfo> movies) {
         if (movies != null) {
             this.mMovies = movies;
         } else {

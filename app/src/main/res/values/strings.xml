@@ -4,4 +4,5 @@
     <string name="more_details">more details</string>
     <string name="rating_lable">Rating: %.1f / 10</string>
     <string name="movie_poster">movie poster</string>
+    <string name="similar_movies">Similar Movies</string>
 </resources>
