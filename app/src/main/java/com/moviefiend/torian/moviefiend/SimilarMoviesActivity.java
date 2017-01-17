@@ -16,7 +16,7 @@ import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 import java.util.ArrayList;
 
 public class SimilarMoviesActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>>, MovieDetailsFragment.Listener {
+        implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>>, MovieDetailsFragment.Listener, ViewPager.OnPageChangeListener {
 
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
@@ -25,6 +25,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
     private ViewPager mMoviePager;
     private MoviePagerAdapter mMoviePagerAdapter;
     private MoviesResponse.MovieInfo mMovieInfo;
+    private ArrayList<MoviesResponse.MovieInfo> mSimilarMovies;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
 
         mMoviePager = (ViewPager) findViewById(R.id.movie_pager);
         mMoviePager.setAdapter(mMoviePagerAdapter);
+        mMoviePager.addOnPageChangeListener(this);
 
         getSupportLoaderManager().initLoader(MOVIE_LOADER_ID, null, this);
     }
@@ -49,7 +51,10 @@ public class SimilarMoviesActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<ArrayList<MoviesResponse.MovieInfo>> loader,
                                ArrayList<MoviesResponse.MovieInfo> data) {
-        mMoviePagerAdapter.setMovies(data);
+        mSimilarMovies = data;
+        mMoviePagerAdapter.setMovies(mSimilarMovies);
+
+        setTitle(mSimilarMovies.get(0).getTitle());
     }
 
     @Override
@@ -64,6 +69,21 @@ public class SimilarMoviesActivity extends AppCompatActivity
         Intent intent = new Intent(this, SimilarMoviesActivity.class);
         intent.putExtra(MOVIE_INFO_EXTRA, movieInfo);
         startActivity(intent);
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="ViewPager.PageChangeListener">
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        setTitle(mSimilarMovies.get(position).getTitle());
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
     }
     //</editor-fold>
 

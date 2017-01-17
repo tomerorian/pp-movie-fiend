@@ -20,6 +20,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
 
         mMovieInfo = getIntent().getParcelableExtra(MOVIE_INFO_EXTRA);
 
+        setTitle(mMovieInfo.getTitle());
+
         MovieDetailsFragment fragment = new MovieDetailsFragment();
         Bundle arguments = new Bundle();
         arguments.putParcelable(MovieDetailsFragment.MOVIE_INFO_ARG, mMovieInfo);

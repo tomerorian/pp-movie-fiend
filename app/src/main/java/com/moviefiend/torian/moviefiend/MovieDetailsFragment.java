@@ -30,20 +30,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsCustom
         customView.setMovie(mMovieInfo);
         customView.setListener(this);
 
-        if (getUserVisibleHint()) {
-            setTitle(mMovieInfo.getTitle());
-        }
-
         return view;
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-        if (isVisibleToUser && mMovieInfo != null && getActivity() != null) {
-            setTitle(mMovieInfo.getTitle());
-        }
     }
 
     @Override
