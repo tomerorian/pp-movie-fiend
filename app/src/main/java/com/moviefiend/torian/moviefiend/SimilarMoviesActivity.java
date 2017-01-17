@@ -1,5 +1,6 @@
 package com.moviefiend.torian.moviefiend;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,7 @@ import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 import java.util.ArrayList;
 
 public class SimilarMoviesActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>> {
+        implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>>, MovieDetailsFragment.Listener {
 
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
@@ -31,7 +32,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
         setContentView(R.layout.similar_movies_activity);
 
         mMovieInfo = getIntent().getParcelableExtra(MOVIE_INFO_EXTRA);
-        mMoviePagerAdapter = new MoviePagerAdapter(getSupportFragmentManager());
+        mMoviePagerAdapter = new MoviePagerAdapter(getSupportFragmentManager(), this);
 
         mMoviePager = (ViewPager) findViewById(R.id.movie_pager);
         mMoviePager.setAdapter(mMoviePagerAdapter);
@@ -57,19 +58,32 @@ public class SimilarMoviesActivity extends AppCompatActivity
     }
     //</editor-fold>
 
+    //<editor-fold desc="MovieDetailsFragment.Listener">
+    @Override
+    public void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo) {
+        Intent intent = new Intent(this, SimilarMoviesActivity.class);
+        intent.putExtra(MOVIE_INFO_EXTRA, movieInfo);
+        startActivity(intent);
+    }
+    //</editor-fold>
+
     private static class MoviePagerAdapter extends FragmentStatePagerAdapter {
 
         private ArrayList<MoviesResponse.MovieInfo> mMovies;
+        private MovieDetailsFragment.Listener mDetailsFragmentListener;
 
-        public MoviePagerAdapter(FragmentManager fm) {
+        public MoviePagerAdapter(FragmentManager fm, MovieDetailsFragment.Listener detailsFragmentListener) {
             super(fm);
 
+            mDetailsFragmentListener = detailsFragmentListener;
             mMovies = new ArrayList<>();
         }
 
         @Override
         public Fragment getItem(int position) {
             MovieDetailsFragment fragment = new MovieDetailsFragment();
+
+            fragment.setListener(mDetailsFragmentListener);
 
             Bundle arguments = new Bundle();
             arguments.putParcelable(MovieDetailsFragment.MOVIE_INFO_ARG, mMovies.get(position));
