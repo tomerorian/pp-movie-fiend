@@ -16,6 +16,8 @@ public class MoviesResponse {
     }
 
     public static class MovieInfo implements Parcelable {
+        @SerializedName("id")
+        Integer mId;
         @SerializedName("poster_path")
         String mPosterPath;
         @SerializedName("title")
@@ -26,6 +28,7 @@ public class MoviesResponse {
         String mDescription;
 
         public MovieInfo(Parcel source) {
+            mId = source.readInt();
             mPosterPath = source.readString();
             mTitle = source.readString();
             mRating = source.readFloat();
@@ -57,12 +60,18 @@ public class MoviesResponse {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(mId);
             dest.writeString(mPosterPath);
             dest.writeString(mTitle);
             dest.writeFloat(mRating);
             dest.writeString(mDescription);
         }
         //</editor-fold>
+
+
+        public Integer getId() {
+            return mId;
+        }
 
         public String getPosterPath() {
             return mPosterPath;
