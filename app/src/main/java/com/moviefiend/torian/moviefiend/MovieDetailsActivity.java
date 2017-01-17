@@ -17,7 +17,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
         setContentView(R.layout.movie_details_activity);
 
         MovieDetailsFragment fragment = new MovieDetailsFragment();
-        fragment.setArguments(getIntent().getExtras());
+        Bundle arguments = new Bundle();
+        arguments.putParcelable(MovieDetailsFragment.MOVIE_INFO_ARG, getIntent().getParcelableExtra(MOVIE_INFO_EXTRA));
+        fragment.setArguments(arguments);
         fragment.setListener(this);
 
         getSupportFragmentManager()

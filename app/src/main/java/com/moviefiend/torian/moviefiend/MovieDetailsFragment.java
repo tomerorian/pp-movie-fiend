@@ -19,6 +19,7 @@ public class MovieDetailsFragment extends Fragment {
     }
 
     public static final int MOVIE_POSTER_SIZE = 780;
+    public static final String MOVIE_INFO_ARG = "movie_info";
 
     private MoviesResponse.MovieInfo mMovieInfo;
     private ImageView mPosterView;
@@ -32,7 +33,7 @@ public class MovieDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.movie_details_fragment, container, false);
 
-        mMovieInfo = getArguments().getParcelable(MovieDetailsActivity.MOVIE_INFO_EXTRA);
+        mMovieInfo = getArguments().getParcelable(MOVIE_INFO_ARG);
 
         mPosterView = (ImageView) view.findViewById(R.id.poster);
         mRatingView = (TextView) view.findViewById(R.id.rating);
