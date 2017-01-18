@@ -43,7 +43,7 @@ public class RatingView extends LinearLayout {
             mStarViews.get(i).setVisibility(VISIBLE);
 
             @FloatRange(from=0.0, to=1.0)
-            float percent = i < (rating - 1) ? 1.0f : i - (rating - 1);
+            float percent = i < (rating - 1) ? 1.0f : rating - i;
             mStarViews.get(i).setPercent(percent);
         }
 
