@@ -1,6 +1,8 @@
 package com.moviefiend.torian.moviefiend;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -37,6 +39,7 @@ public class RatingView extends LinearLayout {
 
     public void setRating(@FloatRange(from=0.0, to=10.0) float rating) {
         mRatingText.setText(getContext().getString(R.string.rating_label, rating));
+        int color = getColorForRating(rating);
 
         int roundedRating = (int) Math.ceil(rating);
 
@@ -46,16 +49,28 @@ public class RatingView extends LinearLayout {
             @FloatRange(from=0.0, to=1.0)
             float percent = i < (rating - 1) ? 1.0f : rating - i;
             mStarViews.get(i).setPercent(percent);
+            mStarViews.get(i).setFillColor(color);
         }
 
         for (int i = roundedRating; i < mStarViews.size(); i++) {
             int visibility = i < mMinStarsShown ? VISIBLE : INVISIBLE;
             mStarViews.get(i).setVisibility(visibility);
             mStarViews.get(i).setPercent(0);
+            mStarViews.get(i).setFillColor(color);
         }
     }
 
     public void setMinStarsShown(int minStarsShown) {
         mMinStarsShown = minStarsShown;
+    }
+
+    private int getColorForRating(float rating) {
+        if (rating <= 3) {
+            return Color.RED;
+        } else if (rating <= 6) {
+            return Color.YELLOW;
+        } else {
+            return Color.GREEN;
+        }
     }
 }
