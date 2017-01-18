@@ -1,5 +1,6 @@
 package com.moviefiend.torian.moviefiend;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -69,7 +70,9 @@ public class MovieDetailsCustomView extends ScrollView {
     }
 
     private void setRating(float rating) {
-        mRatingView.setRating(rating);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mRatingView, "rating", 0, rating);
+        animator.setDuration(2500);
+        animator.start();
     }
 
     private void setDescription(String description) {
