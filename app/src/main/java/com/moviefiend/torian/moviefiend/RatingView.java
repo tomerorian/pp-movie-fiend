@@ -13,6 +13,7 @@ public class RatingView extends LinearLayout {
 
     ArrayList<StarView> mStarViews;
     TextView mRatingText;
+    private int mMinStarsShown;
 
     public RatingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -48,8 +49,13 @@ public class RatingView extends LinearLayout {
         }
 
         for (int i = roundedRating; i < mStarViews.size(); i++) {
-            mStarViews.get(i).setVisibility(INVISIBLE);
+            int visibility = i < mMinStarsShown ? VISIBLE : INVISIBLE;
+            mStarViews.get(i).setVisibility(visibility);
             mStarViews.get(i).setPercent(0);
         }
+    }
+
+    public void setMinStarsShown(int minStarsShown) {
+        mMinStarsShown = minStarsShown;
     }
 }

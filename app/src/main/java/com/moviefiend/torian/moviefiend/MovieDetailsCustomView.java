@@ -70,6 +70,8 @@ public class MovieDetailsCustomView extends ScrollView {
     }
 
     private void setRating(float rating) {
+        mRatingView.setMinStarsShown((int) Math.ceil(rating));
+
         ObjectAnimator animator = ObjectAnimator.ofFloat(mRatingView, "rating", 0, rating);
         animator.setDuration(2500);
         animator.start();
