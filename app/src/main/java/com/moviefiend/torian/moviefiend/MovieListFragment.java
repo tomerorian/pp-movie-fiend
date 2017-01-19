@@ -51,7 +51,7 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
     // <editor-fold desc="Loader">
     @Override
     public Loader<ArrayList<MoviesResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
-        return new MovieInfoLoader(getActivity(), UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY));
+        return new MovieInfoListLoader(getActivity(), UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY));
     }
 
     @Override

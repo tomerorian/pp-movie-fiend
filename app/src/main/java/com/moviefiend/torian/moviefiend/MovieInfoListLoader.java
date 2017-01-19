@@ -12,11 +12,11 @@ import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 import java.util.ArrayList;
 
-public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
+public class MovieInfoListLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
 
     private String mUrl;
 
-    public MovieInfoLoader(Context context, String url) {
+    public MovieInfoListLoader(Context context, String url) {
         super(context);
 
         mUrl = url;
