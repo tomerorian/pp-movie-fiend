@@ -38,4 +38,15 @@ public class UrlHelper {
                 .build()
                 .toString();
     }
+
+    public static String getMovieDetailsUrl(String apiKey, String id) {
+        Uri.Builder builder = new Uri.Builder();
+        return builder.scheme("http")
+                .authority("api.themoviedb.org")
+                .appendEncodedPath("3/movie")
+                .appendPath(id)
+                .appendQueryParameter("api_key", apiKey)
+                .build()
+                .toString();
+    }
 }
