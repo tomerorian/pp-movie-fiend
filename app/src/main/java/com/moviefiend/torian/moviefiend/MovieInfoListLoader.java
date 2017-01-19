@@ -8,11 +8,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.moviefiend.torian.moviefiend.network.GsonRequest;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 import java.util.ArrayList;
 
-public class MovieInfoListLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
+public class MovieInfoListLoader extends Loader<ArrayList<MovieInfo>> {
 
     private String mUrl;
 

@@ -11,12 +11,12 @@ import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
 import java.util.ArrayList;
 
 public class SimilarMoviesActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>>, MovieDetailsFragment.Listener, ViewPager.OnPageChangeListener {
+        implements LoaderManager.LoaderCallbacks<ArrayList<MovieInfo>>, MovieDetailsFragment.Listener, ViewPager.OnPageChangeListener {
 
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
@@ -24,8 +24,8 @@ public class SimilarMoviesActivity extends AppCompatActivity
 
     private ViewPager mMoviePager;
     private MoviePagerAdapter mMoviePagerAdapter;
-    private MoviesResponse.MovieInfo mMovieInfo;
-    private ArrayList<MoviesResponse.MovieInfo> mSimilarMovies;
+    private MovieInfo mMovieInfo;
+    private ArrayList<MovieInfo> mSimilarMovies;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,13 +44,13 @@ public class SimilarMoviesActivity extends AppCompatActivity
 
     //<editor-fold desc="Loader">
     @Override
-    public Loader<ArrayList<MoviesResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
+    public Loader<ArrayList<MovieInfo>> onCreateLoader(int id, Bundle args) {
         return new MovieInfoListLoader(this, UrlHelper.getSimilarMoviesUrl(BuildConfig.TMDB_API_KEY, mMovieInfo.getId()));
     }
 
     @Override
-    public void onLoadFinished(Loader<ArrayList<MoviesResponse.MovieInfo>> loader,
-                               ArrayList<MoviesResponse.MovieInfo> data) {
+    public void onLoadFinished(Loader<ArrayList<MovieInfo>> loader,
+                               ArrayList<MovieInfo> data) {
         mSimilarMovies = data;
         mMoviePagerAdapter.setMovies(mSimilarMovies);
 
@@ -58,14 +58,14 @@ public class SimilarMoviesActivity extends AppCompatActivity
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<MoviesResponse.MovieInfo>> loader) {
+    public void onLoaderReset(Loader<ArrayList<MovieInfo>> loader) {
 
     }
     //</editor-fold>
 
     //<editor-fold desc="MovieDetailsFragment.Listener">
     @Override
-    public void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo) {
+    public void onSimilarMoviesClicked(MovieInfo movieInfo) {
         Intent intent = new Intent(this, SimilarMoviesActivity.class);
         intent.putExtra(MOVIE_INFO_EXTRA, movieInfo);
         startActivity(intent);
@@ -89,7 +89,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
 
     private static class MoviePagerAdapter extends FragmentStatePagerAdapter {
 
-        private ArrayList<MoviesResponse.MovieInfo> mMovies;
+        private ArrayList<MovieInfo> mMovies;
         private MovieDetailsFragment.Listener mDetailsFragmentListener;
 
         public MoviePagerAdapter(FragmentManager fm, MovieDetailsFragment.Listener detailsFragmentListener) {
@@ -117,7 +117,7 @@ public class SimilarMoviesActivity extends AppCompatActivity
             return mMovies.size();
         }
 
-        public void setMovies(ArrayList<MoviesResponse.MovieInfo> movies) {
+        public void setMovies(ArrayList<MovieInfo> movies) {
             if (movies != null) {
                 this.mMovies = movies;
             } else {

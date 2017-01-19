@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
 public class MovieDetailsActivity extends AppCompatActivity implements MovieDetailsFragment.Listener {
 
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
-    private MoviesResponse.MovieInfo mMovieInfo;
+    private MovieInfo mMovieInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
     }
 
     @Override
-    public void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo) {
+    public void onSimilarMoviesClicked(MovieInfo movieInfo) {
         Intent intent = new Intent(this, SimilarMoviesActivity.class);
         intent.putExtra(SimilarMoviesActivity.MOVIE_INFO_EXTRA, mMovieInfo);
         startActivity(intent);

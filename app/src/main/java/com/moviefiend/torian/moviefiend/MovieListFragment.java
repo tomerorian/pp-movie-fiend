@@ -11,14 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
 import java.util.ArrayList;
 
-public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<MoviesResponse.MovieInfo>>,MovieViewHolder.MovieClickListener {
+public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<MovieInfo>>,MovieViewHolder.MovieClickListener {
 
     public interface Listener {
-        void onMovieSelected(MoviesResponse.MovieInfo movieInfo);
+        void onMovieSelected(MovieInfo movieInfo);
     }
 
     private static final int MOVIE_LOADER_ID = 0;
@@ -50,24 +50,24 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
     // <editor-fold desc="Loader">
     @Override
-    public Loader<ArrayList<MoviesResponse.MovieInfo>> onCreateLoader(int id, Bundle args) {
+    public Loader<ArrayList<MovieInfo>> onCreateLoader(int id, Bundle args) {
         return new MovieInfoListLoader(getActivity(), UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY));
     }
 
     @Override
-    public void onLoadFinished(Loader<ArrayList<MoviesResponse.MovieInfo>> loader, ArrayList<MoviesResponse.MovieInfo> data) {
+    public void onLoadFinished(Loader<ArrayList<MovieInfo>> loader, ArrayList<MovieInfo> data) {
         mMovieAdapter.setMovies(data);
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<MoviesResponse.MovieInfo>> loader) {
+    public void onLoaderReset(Loader<ArrayList<MovieInfo>> loader) {
 
     }
     // </editor-fold>
 
     //<editor-fold desc="MovieClickListener">
     @Override
-    public void onMovieClicked(MoviesResponse.MovieInfo movieInfo) {
+    public void onMovieClicked(MovieInfo movieInfo) {
         mListener.onMovieSelected(movieInfo);
     }
     //</editor-fold>

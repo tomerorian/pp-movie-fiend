@@ -5,13 +5,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 import com.squareup.picasso.Picasso;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 
     public interface MovieClickListener {
-        void onMovieClicked(MoviesResponse.MovieInfo movieInfo);
+        void onMovieClicked(MovieInfo movieInfo);
     }
 
     public static final int MOVIE_POSTER_SIZE = 154;
@@ -19,7 +19,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
     private TextView mTitleView;
     private ImageView mPosterView;
     private TextView mRatingView;
-    private MoviesResponse.MovieInfo mMovieInfo;
+    private MovieInfo mMovieInfo;
     private MovieClickListener mClickListener;
 
     public MovieViewHolder(View itemView, MovieClickListener clickListener) {
@@ -32,7 +32,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
         mRatingView = (TextView) itemView.findViewById(R.id.rating);
     }
 
-    public void bindMovie(MoviesResponse.MovieInfo movieInfo) {
+    public void bindMovie(MovieInfo movieInfo) {
         mMovieInfo = movieInfo;
 
         setTitle(mMovieInfo.getTitle());
