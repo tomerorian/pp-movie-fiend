@@ -40,7 +40,6 @@ public class RatingView extends LinearLayout {
     public void setRating(@FloatRange(from=0.0, to=10.0) float rating) {
         mRatingText.setText(getContext().getString(R.string.rating_label, rating));
         int color = getColorForRating(rating);
-
         int roundedRating = (int) Math.ceil(rating);
 
         for (int i = 0; i < roundedRating; i++) {
