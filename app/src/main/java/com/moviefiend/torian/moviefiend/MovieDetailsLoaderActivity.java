@@ -8,7 +8,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 
 import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
@@ -27,7 +26,7 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
         if (mMovieId != null) {
             getSupportLoaderManager().initLoader(MOVIE_LOADER_ID, null, this);
         } else {
-            onFail();
+            gotoHome();
         }
     }
 
@@ -48,7 +47,7 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
 
             finish();
         } else {
-            onFail();
+            gotoHome();
         }
     }
 
@@ -58,7 +57,13 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
 
     //</editor-fold>
 
-    private void onFail() {
+
+    @Override
+    public void onBackPressed() {
+        gotoHome();
+    }
+
+    private void gotoHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
