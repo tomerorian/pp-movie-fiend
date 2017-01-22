@@ -25,9 +25,7 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
         if (mMovieId != null) {
             getSupportLoaderManager().initLoader(MOVIE_LOADER_ID, null, this);
         } else {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            onFail();
         }
     }
 
@@ -39,14 +37,25 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
 
     @Override
     public void onLoadFinished(Loader<MovieInfo> loader, MovieInfo data) {
-        Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra(MovieDetailsActivity.MOVIE_INFO_EXTRA, data);
-        startActivity(intent);
-        finish();
+        if (data != null) {
+            Intent intent = new Intent(this, MovieDetailsActivity.class);
+            intent.putExtra(MovieDetailsActivity.MOVIE_INFO_EXTRA, data);
+            startActivity(intent);
+            finish();
+        } else {
+            onFail();
+        }
     }
 
     @Override
     public void onLoaderReset(Loader<MovieInfo> loader) {
     }
+
     //</editor-fold>
+
+    private void onFail() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
