@@ -2,7 +2,6 @@ package com.moviefiend.torian.moviefiend;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,8 +12,8 @@ import java.util.ArrayList;
 
 public class RatingView extends LinearLayout {
 
-    ArrayList<StarView> mStarViews;
-    TextView mRatingText;
+    private ArrayList<StarView> mStarViews;
+    private TextView mRatingText;
     private int mMinStarsShown;
 
     public RatingView(Context context, AttributeSet attrs) {
@@ -40,7 +39,6 @@ public class RatingView extends LinearLayout {
     public void setRating(@FloatRange(from=0.0, to=10.0) float rating) {
         mRatingText.setText(getContext().getString(R.string.rating_label, rating));
         int color = getColorForRating(rating);
-
         int roundedRating = (int) Math.ceil(rating);
 
         for (int i = 0; i < roundedRating; i++) {
