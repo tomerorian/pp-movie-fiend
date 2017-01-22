@@ -19,6 +19,7 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.movie_details_loader_activity);
 
         Uri data = getIntent().getData();
         mMovieId = data.getQueryParameter("id");
