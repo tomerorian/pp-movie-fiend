@@ -77,17 +77,20 @@ public class StarView extends View {
     }
 
     private void createStarPath(Path path) {
-        float mid = getWidth() / 2;
-        float min = Math.min(getWidth(), getHeight());
-        float half = min / 2;
-        mid = mid - half;
+        float width = getWidth() - getPaddingLeft() - getPaddingRight();
+        float height = getHeight() - getPaddingTop() - getPaddingBottom();
+        float mid = width / 2;
+        float min = Math.min(width, height);
+        float center = min / 2;
+        float minX = mid - center + getPaddingLeft();
+        float minY = getPaddingTop();
 
-        path.moveTo(mid + half * 0.5f, half * 0.84f);
-        path.lineTo(mid + half * 1.5f, half * 0.84f);
-        path.lineTo(mid + half * 0.68f, half * 1.45f);
-        path.lineTo(mid + half * 1.0f, half * 0.5f);
-        path.lineTo(mid + half * 1.32f, half * 1.45f);
-        path.lineTo(mid + half * 0.5f, half * 0.84f);
+        path.moveTo(minX + center * 0.5f, minY + center * 0.84f);
+        path.lineTo(minX + center * 1.5f, minY + center * 0.84f);
+        path.lineTo(minX + center * 0.68f, minY + center * 1.45f);
+        path.lineTo(minX + center * 1.0f, minY + center * 0.5f);
+        path.lineTo(minX + center * 1.32f, minY + center * 1.45f);
+        path.lineTo(minX + center * 0.5f, minY + center * 0.84f);
 
         path.close();
     }
