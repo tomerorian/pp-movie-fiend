@@ -71,19 +71,16 @@ public class StarView extends View {
     public void setLineColor(@ColorInt int lineColor) {
         mLinePaint.setColor(lineColor);
         invalidate();
-        requestLayout();
     }
 
     public void setFillColor(@ColorInt int fillColor) {
         mFillPaint.setColor(fillColor);
         invalidate();
-        requestLayout();
     }
 
     public void setPercent(@FloatRange(from=0.0, to=1.0) float percent) {
         mPercent = percent;
         invalidate();
-        requestLayout();
     }
 
     private void createStarPath(Path path) {
