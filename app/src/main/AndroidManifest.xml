@@ -18,7 +18,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MovieDetailsActivity" />
+        <activity android:name=".MovieDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".SimilarMoviesActivity" />
 
         <activity android:name=".MovieDetailsLoaderActivity">
