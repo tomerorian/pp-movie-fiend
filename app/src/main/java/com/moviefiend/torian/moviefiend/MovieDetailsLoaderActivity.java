@@ -54,7 +54,6 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
     @Override
     public void onLoaderReset(Loader<MovieInfo> loader) {
     }
-
     //</editor-fold>
 
 
