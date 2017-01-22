@@ -62,6 +62,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setRating(float rating) {
-        mRatingView.setText(itemView.getContext().getString(R.string.rating_lable, rating));
+        mRatingView.setText(itemView.getContext().getString(R.string.rating_label, rating));
     }
 }

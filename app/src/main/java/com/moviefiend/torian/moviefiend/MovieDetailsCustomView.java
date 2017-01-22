@@ -1,5 +1,6 @@
 package com.moviefiend.torian.moviefiend;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ public class MovieDetailsCustomView extends ScrollView {
     private static final int MOVIE_POSTER_SIZE = 780;
 
     private ImageView mPosterView;
-    private TextView mRatingView;
+    private RatingView mRatingView;
     private TextView mDescriptionView;
     private TextView mSimilarMoviesBtn;
     private MoviesResponse.MovieInfo mMovieInfo;
@@ -56,7 +57,7 @@ public class MovieDetailsCustomView extends ScrollView {
 
     private void findChildren() {
         mPosterView = (ImageView) findViewById(R.id.poster);
-        mRatingView = (TextView) findViewById(R.id.rating);
+        mRatingView = (RatingView) findViewById(R.id.rating);
         mDescriptionView = (TextView) findViewById(R.id.description);
         mSimilarMoviesBtn = (TextView) findViewById(R.id.similar_movies);
     }
@@ -69,7 +70,11 @@ public class MovieDetailsCustomView extends ScrollView {
     }
 
     private void setRating(float rating) {
-        mRatingView.setText(getContext().getString(R.string.rating_lable, rating));
+        mRatingView.setMinStarsShown((int) Math.ceil(rating));
+
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mRatingView, "rating", 0, rating);
+        animator.setDuration(2500);
+        animator.start();
     }
 
     private void setDescription(String description) {

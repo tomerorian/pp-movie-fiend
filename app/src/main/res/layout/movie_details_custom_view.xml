@@ -12,11 +12,12 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/movie_poster" />
 
-        <TextView
+        <com.moviefiend.torian.moviefiend.RatingView
             android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp" />
 
         <TextView
             android:id="@+id/similar_movies"
