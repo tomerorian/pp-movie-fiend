@@ -1,6 +1,7 @@
 package com.moviefiend.torian.moviefiend;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -36,6 +37,15 @@ public class StarView extends View {
         mStarFillPath = new Path();
 
         mPercent = 0f;
+
+        TypedArray styleAttrs = context.getTheme().obtainStyledAttributes(attrs, R.styleable.StarView, 0, 0);
+
+        try {
+            int lineColor = styleAttrs.getColor(R.styleable.StarView_line_color, mLinePaint.getColor());
+            mLinePaint.setColor(lineColor);
+        } finally {
+            styleAttrs.recycle();
+        }
     }
 
     @Override
