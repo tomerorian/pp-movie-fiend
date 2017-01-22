@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity implements MovieListFragment
 
     @Override
     public void onMovieSelected(MovieInfo movieInfo) {
-        Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra(MovieDetailsActivity.MOVIE_INFO_EXTRA, movieInfo);
+        Intent intent = MovieDetailsActivity.createIntent(this, movieInfo);
         startActivity(intent);
     }
 }

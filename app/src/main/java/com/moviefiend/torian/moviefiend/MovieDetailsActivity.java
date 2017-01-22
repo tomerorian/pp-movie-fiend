@@ -1,5 +1,6 @@
 package com.moviefiend.torian.moviefiend;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,13 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
     public static final String MOVIE_INFO_EXTRA = "movie_info";
 
     private MovieInfo mMovieInfo;
+
+    public static Intent createIntent(Context context, MovieInfo movieInfo) {
+        Intent intent = new Intent(context, MovieDetailsActivity.class);
+        intent.putExtra(MOVIE_INFO_EXTRA, movieInfo);
+
+        return intent;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -40,8 +40,7 @@ public class MovieDetailsLoaderActivity extends AppCompatActivity implements Loa
     @Override
     public void onLoadFinished(Loader<MovieInfo> loader, MovieInfo data) {
         if (data != null) {
-            Intent intent = new Intent(this, MovieDetailsActivity.class);
-            intent.putExtra(MovieDetailsActivity.MOVIE_INFO_EXTRA, data);
+            Intent intent = MovieDetailsActivity.createIntent(this, data);
 
             TaskStackBuilder.create(this)
                     .addNextIntentWithParentStack(intent)
