@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class MovieInfo implements Parcelable {
     @SerializedName("id")
-    Integer mId;
+    int mId;
     @SerializedName("poster_path")
     String mPosterPath;
     @SerializedName("title")
     String mTitle;
     @SerializedName("vote_average")
-    Float mRating;
+    float mRating;
     @SerializedName("overview")
     String mDescription;
 
@@ -59,7 +59,7 @@ public class MovieInfo implements Parcelable {
     //</editor-fold>
 
 
-    public Integer getId() {
+    public int getId() {
         return mId;
     }
 
@@ -71,7 +71,7 @@ public class MovieInfo implements Parcelable {
         return mTitle;
     }
 
-    public Float getRating() {
+    public float getRating() {
         return mRating;
     }
 
