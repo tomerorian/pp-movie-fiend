@@ -8,38 +8,37 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.moviefiend.torian.moviefiend.network.GsonRequest;
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
-import java.util.ArrayList;
+public class SingleMovieInfoLoader extends Loader<MovieInfo> {
 
-public class MovieInfoLoader extends Loader<ArrayList<MoviesResponse.MovieInfo>> {
+    private final String mMovieId;
 
-    private String mUrl;
-
-    public MovieInfoLoader(Context context, String url) {
+    public SingleMovieInfoLoader(Context context, String movieId) {
         super(context);
 
-        mUrl = url;
+        mMovieId = movieId;
     }
 
     @Override
     protected void onForceLoad() {
-        loadMovies();
+        loadMovie();
     }
 
     @Override
     protected void onStartLoading() {
-        loadMovies();
+        loadMovie();
     }
 
-    private void loadMovies() {
+    private void loadMovie() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        GsonRequest<MoviesResponse> request = new GsonRequest<>(mUrl, MoviesResponse.class, null,
-                new Response.Listener<MoviesResponse>() {
+        GsonRequest<MovieInfo> request = new GsonRequest<>(UrlHelper.getMovieDetailsUrl(BuildConfig.TMDB_API_KEY, mMovieId),
+                                                                                        MovieInfo.class, null,
+                new Response.Listener<MovieInfo>() {
                     @Override
-                    public void onResponse(MoviesResponse response) {
-                        deliverResult(response.getMovies());
+                    public void onResponse(MovieInfo response) {
+                        deliverResult(response);
                     }
                 },
                 new Response.ErrorListener() {

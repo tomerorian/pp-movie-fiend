@@ -9,13 +9,13 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailsCustomView extends ScrollView {
 
     public interface Listener {
-        void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo);
+        void onSimilarMoviesClicked(MovieInfo movieInfo);
     }
 
     private static final int MOVIE_POSTER_SIZE = 780;
@@ -24,7 +24,7 @@ public class MovieDetailsCustomView extends ScrollView {
     private RatingView mRatingView;
     private TextView mDescriptionView;
     private TextView mSimilarMoviesBtn;
-    private MoviesResponse.MovieInfo mMovieInfo;
+    private MovieInfo mMovieInfo;
     private Listener mListener;
 
     public MovieDetailsCustomView(Context context, AttributeSet attrs) {
@@ -34,7 +34,7 @@ public class MovieDetailsCustomView extends ScrollView {
         findChildren();
     }
 
-    public void setMovie(MoviesResponse.MovieInfo movie) {
+    public void setMovie(MovieInfo movie) {
         mMovieInfo = movie;
 
         setPosterView(UrlHelper.getPosterUrl(MOVIE_POSTER_SIZE, mMovieInfo.getPosterPath()));

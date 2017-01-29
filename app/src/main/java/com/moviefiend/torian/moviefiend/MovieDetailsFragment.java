@@ -7,17 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
 public class MovieDetailsFragment extends Fragment implements MovieDetailsCustomView.Listener {
 
     public interface Listener {
-        void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo);
+        void onSimilarMoviesClicked(MovieInfo movieInfo);
     }
 
     public static final String MOVIE_INFO_ARG = "movie_info";
 
-    private MoviesResponse.MovieInfo mMovieInfo;
+    private MovieInfo mMovieInfo;
     private Listener mListener;
 
     @Nullable
@@ -34,7 +34,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsCustom
     }
 
     @Override
-    public void onSimilarMoviesClicked(MoviesResponse.MovieInfo movieInfo) {
+    public void onSimilarMoviesClicked(MovieInfo movieInfo) {
         if (mListener != null) {
             mListener.onSimilarMoviesClicked(movieInfo);
         }

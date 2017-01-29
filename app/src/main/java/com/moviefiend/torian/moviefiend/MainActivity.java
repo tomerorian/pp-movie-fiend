@@ -1,10 +1,10 @@
 package com.moviefiend.torian.moviefiend;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.moviefiend.torian.moviefiend.network.MoviesResponse;
+import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
 public class MainActivity extends AppCompatActivity implements MovieListFragment.Listener {
 
@@ -18,9 +18,8 @@ public class MainActivity extends AppCompatActivity implements MovieListFragment
     }
 
     @Override
-    public void onMovieSelected(MoviesResponse.MovieInfo movieInfo) {
-        Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra(MovieDetailsActivity.MOVIE_INFO_EXTRA, movieInfo);
+    public void onMovieSelected(MovieInfo movieInfo) {
+        Intent intent = MovieDetailsActivity.createIntent(this, movieInfo);
         startActivity(intent);
     }
 }
