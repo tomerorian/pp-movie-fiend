@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 
 import com.moviefiend.torian.moviefiend.network.MovieInfo;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<MovieInfo>>,MovieViewHolder.MovieClickListener {
+public class MovieListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<MovieInfo>>,MovieViewHolder.MovieClickListener {
 
     public interface Listener {
         void onMovieSelected(MovieInfo movieInfo);
@@ -50,17 +50,17 @@ public class MovieListFragment extends Fragment implements LoaderManager.LoaderC
 
     // <editor-fold desc="Loader">
     @Override
-    public Loader<ArrayList<MovieInfo>> onCreateLoader(int id, Bundle args) {
+    public Loader<List<MovieInfo>> onCreateLoader(int id, Bundle args) {
         return new MovieInfoListLoader(getActivity(), UrlHelper.getNowPlayingUrl(BuildConfig.TMDB_API_KEY));
     }
 
     @Override
-    public void onLoadFinished(Loader<ArrayList<MovieInfo>> loader, ArrayList<MovieInfo> data) {
+    public void onLoadFinished(Loader<List<MovieInfo>> loader, List<MovieInfo> data) {
         mMovieAdapter.setMovies(data);
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<MovieInfo>> loader) {
+    public void onLoaderReset(Loader<List<MovieInfo>> loader) {
 
     }
     // </editor-fold>

@@ -12,8 +12,9 @@ import com.moviefiend.torian.moviefiend.network.MovieInfo;
 import com.moviefiend.torian.moviefiend.network.MoviesResponse;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MovieInfoListLoader extends Loader<ArrayList<MovieInfo>> {
+public class MovieInfoListLoader extends Loader<List<MovieInfo>> {
 
     private String mUrl;
 
